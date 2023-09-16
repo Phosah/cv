@@ -79,79 +79,75 @@ class CVViewScreen extends ConsumerWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                'Work Experience:',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: cvData.workExperience.length,
-                itemBuilder: (context, index) {
-                  final workExperience = cvData.workExperience[index];
-                  return ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          workExperience.company,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          workExperience.date,
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
-                        ),
-                      ],
+              Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black,
+                      width: 1.0,
                     ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: workExperience.roles
-                          .map((role) => Text(role))
-                          .toList(),
-                    ),
-                  );
-                },
+                  ),
+                ),
+                child: const Text(
+                  'Work Experience:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
               ),
+              Row(
+                children: [
+                  Text(
+                    cvData.workCompany,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20.0),
+                  ),
+                  const Spacer(),
+                  Text(
+                    cvData.workDate,
+                    style: const TextStyle(
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
+              Text(cvData.workRole),
+              const SizedBox(
+                height: 20,
+              ),
+              Container(
+                margin: const EdgeInsets.only(bottom: 10),
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'Personal Experience:',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ),
+              Row(
+                children: [
+                  Text(
+                    cvData.personalCompany,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20.0),
+                  ),
+                  const Spacer(),
+                  Text(
+                    cvData.personalDate,
+                    style: const TextStyle(
+                      color: Colors.blue,
+                    ),
+                  ),
+                ],
+              ),
+              Text(cvData.personalRole),
               const SizedBox(
                 height: 10,
-              ),
-              const Text(
-                'Personal Experience:',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: cvData.personalExperience.length,
-                itemBuilder: (context, index) {
-                  final personalExperience = cvData.personalExperience[index];
-                  return ListTile(
-                    title: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          personalExperience.company,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                          ),
-                        ),
-                        const Spacer(),
-                        Text(
-                          personalExperience.date,
-                          style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                    subtitle: Text(personalExperience.description),
-                  );
-                },
               ),
             ],
           ),
