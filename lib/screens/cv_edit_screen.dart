@@ -3,12 +3,21 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cv_app/providers/cv_data_provider.dart';
 
 class CVEditScreen extends ConsumerWidget {
-  const CVEditScreen({Key? key}) : super(key: key);
+  CVEditScreen({Key? key}) : super(key: key);
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController slackUsernameController = TextEditingController();
+  final TextEditingController githubController = TextEditingController();
+  final TextEditingController personalBioController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final _formKey = GlobalKey<FormState>();
     final cvDataNotifier = ref.read(cvDataProvider.notifier);
+
+    fullNameController.text = cvDataNotifier.fullName ?? '';
+    slackUsernameController.text = cvDataNotifier.slackName ?? '';
+    githubController.text = cvDataNotifier.githubHandle ?? '';
+    personalBioController.text = cvDataNotifier.personalBio ?? '';
 
     return Scaffold(
       appBar: AppBar(
@@ -25,6 +34,7 @@ class CVEditScreen extends ConsumerWidget {
                 decoration: const InputDecoration(
                   labelText: 'Full Name',
                 ),
+                controller: fullNameController,
                 onSaved: (value) {
                   cvDataNotifier.updateFullName(value!);
                 },
@@ -34,6 +44,7 @@ class CVEditScreen extends ConsumerWidget {
                 decoration: const InputDecoration(
                   labelText: 'Slack Username',
                 ),
+                controller: slackUsernameController,
                 onSaved: (value) {
                   cvDataNotifier.updateSlackName(value!);
                 },
@@ -43,6 +54,7 @@ class CVEditScreen extends ConsumerWidget {
                 decoration: const InputDecoration(
                   labelText: 'Github',
                 ),
+                controller: githubController,
                 onSaved: (value) {
                   cvDataNotifier.updateGithubHandle(value!);
                 },
@@ -53,6 +65,7 @@ class CVEditScreen extends ConsumerWidget {
                 decoration: const InputDecoration(
                   labelText: 'Personal Bio',
                 ),
+                controller: personalBioController,
                 onSaved: (value) {
                   cvDataNotifier.updatePersonalBio(value!);
                 },
@@ -77,7 +90,7 @@ class CVEditScreen extends ConsumerWidget {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _formKey.currentState!.save();
-                    // Perform save operation
+                    Navigator.pop(context);
                   }
                 },
                 child: const Text('Save'),

@@ -41,6 +41,11 @@ final cvDataProvider =
 class CVDataNotifier extends StateNotifier<CVData> {
   CVDataNotifier(CVData state) : super(state);
 
+  String? get fullName => state.fullName;
+  String? get slackName => state.slackName;
+  String? get githubHandle => state.githubHandle;
+  String? get personalBio => state.personalBio;
+
   void updateFullName(String fullName) {
     state = state.copyWith(fullName: fullName);
   }

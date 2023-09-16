@@ -27,20 +27,55 @@ class CVViewScreen extends ConsumerWidget {
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
-              Text(
-                'Slack: ${cvData.slackName}',
+              RichText(
+                text: TextSpan(
+                  text: 'Slack: ',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: cvData.slackName,
+                      style: const TextStyle(
+                          color: Colors.black, fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 4,
               ),
-              Text(
-                'Github Handle: ${cvData.githubHandle}',
-                style: const TextStyle(color: Colors.blue),
+              Text.rich(
+                TextSpan(
+                  text: 'Github: ',
+                  style: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: cvData.githubHandle,
+                      style: const TextStyle(
+                          color: Colors.blue, fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
+              ),
+              Text.rich(
+                TextSpan(
+                  text: 'Personal Bio: ',
+                  style: const TextStyle(
+                      color: Colors.black, fontWeight: FontWeight.bold),
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: cvData.personalBio,
+                      style: const TextStyle(fontWeight: FontWeight.normal),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 4,
               ),
-              Text('Personal Bio: ${cvData.personalBio}'),
               const SizedBox(
                 height: 10,
               ),
@@ -126,7 +161,7 @@ class CVViewScreen extends ConsumerWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const CVEditScreen()),
+            MaterialPageRoute(builder: (context) => CVEditScreen()),
           );
         },
         backgroundColor: buttonColor,
