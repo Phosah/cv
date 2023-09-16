@@ -26,5 +26,13 @@ final cvDataProvider = StateProvider<CVData>(
         ],
       ),
     ],
+    personalExperience: [
+      PersonalExperience(
+        date: 'Aug 2020 - Oct 2020',
+        company: 'HNG i8 Finalist',
+        description:
+            'Architected and implemented a scalable web3 application infrastructure using Next.js, leveraging its server-side rendering capabilities for optimal performance.',
+      ),
+    ],
   ),
 );

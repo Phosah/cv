@@ -25,6 +25,14 @@ final cvDataProvider = StateProvider<CVData>(
         ],
       ),
     ],
+    personalExperience: [
+      PersonalExperience(
+        company: 'HNG Internship',
+        date: '1 year of experience',
+        description:
+            'Developed a personal project using Flutter and Riverpod, showcasing my skills in cross-platform app development.',
+      ),
+    ],
   ),
 );
 
@@ -34,6 +42,7 @@ class CVData {
   String githubHandle;
   String personalBio;
   List<WorkExperience> workExperience;
+  List<PersonalExperience> personalExperience;
 
   CVData({
     required this.fullName,
@@ -41,6 +50,7 @@ class CVData {
     required this.githubHandle,
     required this.personalBio,
     required this.workExperience,
+    required this.personalExperience,
   });
 }
 
@@ -53,5 +63,17 @@ class WorkExperience {
     required this.date,
     required this.company,
     required this.roles,
+  });
+}
+
+class PersonalExperience {
+  String date;
+  String company;
+  String description;
+
+  PersonalExperience({
+    required this.date,
+    required this.company,
+    required this.description,
   });
 }
