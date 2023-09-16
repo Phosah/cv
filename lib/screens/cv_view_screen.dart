@@ -9,10 +9,12 @@ class CVViewScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final cvData = ref.watch(cvDataProvider);
+    const Color buttonColor = Color.fromARGB(255, 167, 124, 188);
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('CV'),
+        backgroundColor: buttonColor,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -21,7 +23,7 @@ class CVViewScreen extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                ' ${cvData.fullName}',
+                cvData.fullName,
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
@@ -116,20 +118,19 @@ class CVViewScreen extends ConsumerWidget {
                   );
                 },
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CVEditScreen(),
-                    ),
-                  );
-                },
-                child: const Text('Edit'),
-              ),
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CVEditScreen()),
+          );
+        },
+        backgroundColor: buttonColor,
+        child: const Icon(Icons.edit),
       ),
     );
   }

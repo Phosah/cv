@@ -1,22 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:cv_app/providers/cv_data_provider.dart';
 
-class CVEditScreen extends StatefulWidget {
+class CVEditScreen extends ConsumerWidget {
   const CVEditScreen({Key? key}) : super(key: key);
 
   @override
-  State<CVEditScreen> createState() => _CVEditScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final _formKey = GlobalKey<FormState>();
+    final cvDataNotifier = ref.read(cvDataProvider.notifier);
 
-class _CVEditScreenState extends State<CVEditScreen> {
-  final _formKey = GlobalKey<FormState>();
-  var _enteredName = '';
-  var _enteredSlackName = '';
-  var _enteredGithub = '';
-  var _enteredPersonalBio = '';
-  var _enteredWorkExperience = '';
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('CV APPLICATION'),
@@ -33,7 +26,7 @@ class _CVEditScreenState extends State<CVEditScreen> {
                   labelText: 'Full Name',
                 ),
                 onSaved: (value) {
-                  _enteredName = value!;
+                  cvDataNotifier.updateFullName(value!);
                 },
               ),
               TextFormField(
@@ -42,36 +35,44 @@ class _CVEditScreenState extends State<CVEditScreen> {
                   labelText: 'Slack Username',
                 ),
                 onSaved: (value) {
-                  _enteredSlackName = value!;
+                  cvDataNotifier.updateSlackName(value!);
                 },
               ),
               TextFormField(
-                maxLength: 50,
+                // maxLength: 50,
                 decoration: const InputDecoration(
-                  labelText: 'Github handle',
+                  labelText: 'Github',
                 ),
                 onSaved: (value) {
-                  _enteredGithub = value!;
+                  cvDataNotifier.updateGithubHandle(value!);
                 },
               ),
               TextFormField(
-                maxLength: 50,
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
                 decoration: const InputDecoration(
                   labelText: 'Personal Bio',
                 ),
                 onSaved: (value) {
-                  _enteredPersonalBio = value!;
+                  cvDataNotifier.updatePersonalBio(value!);
                 },
               ),
-              TextFormField(
-                maxLength: 50,
-                decoration: const InputDecoration(
-                  labelText: 'Description',
-                ),
-                onSaved: (value) {
-                  _enteredWorkExperience = value!;
-                },
-              ),
+              // TextFormField(
+              //   maxLength: 50,
+              //   decoration: const InputDecoration(
+              //     labelText: 'Description',
+              //   ),
+              //   onSaved: (value) {
+              //     final workExperience = [
+              //       WorkExperience(
+              //         date: '...',
+              //         company: '...',
+              //         roles: [value!],
+              //       ),
+              //     ];
+              //     cvDataNotifier.updateWorkExperience(workExperience);
+              //   },
+              // ),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
