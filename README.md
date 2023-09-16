@@ -1,6 +1,6 @@
 # cv_app
 
-A Flutter project that uses WebViewComponent to display a web page within the app.
+A flutter project that displays a CV document on its main page and also grants you access to edit and modify the data from the Edit page to suit you needs.
 
 ## Getting Started
 
