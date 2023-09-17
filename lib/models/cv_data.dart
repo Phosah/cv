@@ -105,7 +105,7 @@ class CVDataProvider extends StateNotifier<CVData> {
                 date: '3 years of experience',
                 company: 'Reftek',
                 roles:
-                    'Engineered efficient state management with Redux and Hooks, reducing code complexity by 25% and improving scalability and maintainability.'),
+                    'Engineered efficient state management with Redux and Hooks, reducing code complexity by 2ji5% and improving scalability and maintainability.'),
           ],
           personalExperience: [
             PersonalExperience(

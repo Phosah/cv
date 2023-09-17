@@ -92,10 +92,4 @@ class CVDataNotifier extends StateNotifier<CVData> {
   void updatePersonalRole(String personalRole) {
     state = state.copyWith(personalRole: personalRole);
   }
-
-  // void updateWorkExperience(WorkExperience workExperience) {
-  //   state = state.copyWith(
-  //     workExperience: [workExperience],
-  //   );
-  // }
 }
